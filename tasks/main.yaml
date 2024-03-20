@@ -1,0 +1,61 @@
+---
+- name: Global parameters
+  ansible.builtin.import_tasks: parameter.yaml
+  tags: global_paramenter
+
+- name: Partition table templates
+  ansible.builtin.import_tasks: ptable.yaml
+  tags: partition_table
+
+- name: Installation medium
+  ansible.builtin.import_tasks: medium.yaml
+  tags: installation_medium
+
+- name: Puppet environment
+  ansible.builtin.import_tasks: environment.yaml
+  tags: puppet_environment
+
+- name: Settings
+  ansible.builtin.import_tasks: setting.yaml
+  tags: setting
+
+- name: Domains
+  ansible.builtin.import_tasks: domain.yaml
+  tags: domain
+
+- name: Subnets
+  ansible.builtin.import_tasks: subnet.yaml
+  tags: subnet
+
+- name: Operatingsystem
+  ansible.builtin.import_tasks: os.yaml
+  tags: operatingsystem
+
+- name: Hostgroups
+  ansible.builtin.import_tasks: hostgroup.yaml
+  tags: hostgroup
+
+- name: Provisioning templates
+  ansible.builtin.import_tasks: template.yaml
+  tags: provisioning_template
+
+- name: OS default templates
+  ansible.builtin.import_tasks: default_template.yaml
+  tags: os_default_template
+
+- name: Compute resources
+  ansible.builtin.import_tasks: compute_resource.yaml
+  tags: compute_resource
+
+- name: Compute profiles
+  ansible.builtin.import_tasks: compute_profile.yaml
+  tags: compute_profile
+
+#- name: Install packages
+  #  ansible.builtin.import_tasks: packages.yaml
+
+#- name: Add users
+  #  ansible.builtin.import_tasks: users.yaml
+
+#- name: Setup services
+#  ansible.builtin.import_tasks: service.yaml

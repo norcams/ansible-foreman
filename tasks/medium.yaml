@@ -1,0 +1,14 @@
+---
+- name: Setup installation medium
+  theforeman.foreman.installation_medium:
+    name: "{{ item.name | mandatory }}"
+    path: "{{ item.path | mandatory }}"
+    os_family: "{{ item.os_family | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_installation_medium | default([]) }}"
+  loop_control:
+    label: "{{ item.name }} => {{ item.path }}"

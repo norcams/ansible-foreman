@@ -1,0 +1,97 @@
+---
+foreman_compute_profiles:
+  - name: small
+    vm_attrs:
+      cores:   '1'
+      memory: '2254857830' #2.1 GB for el8.6
+      interfaces_attributes:
+        '0':
+          bridge: br0
+          model:  'virtio'
+          type:   'bridge'
+        'br1':
+          bridge: br1
+          model:  'virtio'
+          type:   'bridge'
+      volumes_attributes:
+        '0':
+          allocation:   '0G'
+          pool_name:    'dirpool'
+          capacity:     '10G'
+          format_type:  'qcow2'
+  - name: medium
+    vm_attrs:
+      cores:   '1'
+      memory: '4294967296'
+      interfaces_attributes:
+        '0':
+          bridge: br0
+          model:  'virtio'
+          type:   'bridge'
+        'br1':
+          bridge: br1
+          model:  'virtio'
+          type:   'bridge'
+      volumes_attributes:
+        '0':
+          allocation:   '0G'
+          pool_name:    'dirpool'
+          capacity:     '10G'
+          format_type:  'qcow2'
+  - name: large
+    vm_attrs:
+      cores:   '2'
+      memory: '4294967296'
+      interfaces_attributes:
+        '0':
+          bridge: br0
+          model:  'virtio'
+          type:   'bridge'
+        'br1':
+          bridge: br1
+          model:  'virtio'
+          type:   'bridge'
+      volumes_attributes:
+        '0':
+          allocation:   '0G'
+          pool_name:    'dirpool'
+          capacity:     '10G'
+          format_type:  'qcow2'
+  - name: xlarge
+    vm_attrs:
+      cores:   '2'
+      memory: '8589934592'
+      interfaces_attributes:
+        '0':
+          bridge: br0
+          model:  'virtio'
+          type:   'bridge'
+        'br1':
+          bridge: br1
+          model:  'virtio'
+          type:   'bridge'
+      volumes_attributes:
+        '0':
+          allocation:   '0G'
+          pool_name:    'dirpool'
+          capacity:     '10G'
+          format_type:  'qcow2'
+  - name: 2xlarge
+    vm_attrs:
+      cores:   '4'
+      memory: '8589934592'
+      interfaces_attributes:
+        '0':
+          bridge: br0
+          model:  'virtio'
+          type:   'bridge'
+        'br1':
+          bridge: br1
+          model:  'virtio'
+          type:   'bridge'
+      volumes_attributes:
+        '0':
+          allocation:   '0G'
+          pool_name:    'dirpool'
+          capacity:     '10G'
+          format_type:  'qcow2'

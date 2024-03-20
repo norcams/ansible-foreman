@@ -1,0 +1,4 @@
+---
+foreman_partition_table:
+  - layout: 'partition_tables_templates/kickstart_default.erb'
+  - layout: 'partition_tables_templates/kickstart_default_uefi.erb'

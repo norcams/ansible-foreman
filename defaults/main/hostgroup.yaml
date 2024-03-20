@@ -1,0 +1,36 @@
+---
+foreman_hostgroups:
+  - name: "el7"
+    architecture: "x86_64"
+    operatingsystem: "{{ el7_latest }}"
+    medium: "CentOS NREC mirror"
+    ptable: "{{foreman_template_prefix }}Kickstart default"
+    subnet: "{{ location }}"
+    domain: "{{ domain_mgmt }}"
+    pxe_loader: "PXELinux BIOS"
+    puppet_ca_proxy: "{{ foreman_puppet_ca_proxy | default(ansible_fqdn) }}"
+  - name: "el8"
+    architecture: "x86_64"
+    operatingsystem: "{{ el8_latest }}"
+    medium: "AlmaLinux NREC mirror"
+    ptable: "{{foreman_template_prefix }}Kickstart default"
+    subnet: "{{ location }}"
+    domain: "{{ domain_mgmt }}"
+    pxe_loader: "PXELinux BIOS"
+    puppet_ca_proxy: "{{ foreman_puppet_ca_proxy | default(ansible_fqdn) }}"
+  - name: "legacy"
+    parent: "el8"
+    parameters:
+      - name: "biosdevname"
+        value: 1
+      - name: "installdevice"
+        value: "sda"
+  - name: "uefi"
+    parent: "el8"
+    ptable: "{{foreman_template_prefix }}Kickstart default uefi"
+    pxe_loader: "Grub2 UEFI"
+    parameters:
+      - name: "biosdevname"
+        value: 1
+      - name: "installdevice"
+        value: "sda"

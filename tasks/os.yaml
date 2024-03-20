@@ -1,0 +1,26 @@
+---
+- name: "Debug"
+  debug: var=item
+  loop: "{{ foreman_operatingsystems | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: foreman_debug
+
+- name: "Setup operatingsystem (fail in check mode)"
+  theforeman.foreman.operatingsystem:
+    name: "{{ item.name | mandatory }}"
+    major: "{{ item.major | default(omit) }}"
+    minor: "{{ item.minor | default(omit) }}"
+    password_hash: "{{ item.password_hash | default('SHA512') }}"
+    architectures: "{{ item.architectures | default('x86_64') }}"
+    ptables: "{{ item.ptables | default(omit) }}"
+    os_family: "{{ item.os_family | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_operatingsystems | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  ignore_errors: "{{ ansible_check_mode }}"

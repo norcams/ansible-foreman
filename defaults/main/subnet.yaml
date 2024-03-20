@@ -1,0 +1,18 @@
+---
+foreman_subnets:
+  - name: "{{ location }}"
+    description: "mgmt net"
+    network: "{{ ansible_facts[mgmt_interface]['ipv4']['network'] }}"
+    cidr: "{{ ansible_facts[mgmt_interface]['ipv4']['prefix'] }}"
+    mask: "{{ ansible_facts[mgmt_interface]['ipv4']['netmask'] }}"
+    gateway: "{{ foreman_subnet_gateway | default(omit) }}"
+    dns_primary: "{{ foreman_dns_primary | default(ansible_facts['dns']['nameservers'][0]) }}"
+      #    from_ip: "{{ mgmt_network_cidr | ansible.utils.ipaddr(dhcp_pool_start | mandatory ) | ansible.utils.ipaddr('address') }}"
+      #    to_ip: "{{  mgmt_network_cidr | ansible.utils.ipaddr(dhcp_pool_end) | ansible.utils.ipaddr('address') }}"
+    boot_mode: "DHCP"
+    dhcp_proxy: "{{ foreman_dhcp_proxy | default(ansible_fqdn) }}"
+    tftp_proxy: "{{ foreman_tftp_proxy | default(ansible_fqdn) }}"
+    httpboot_proxy: "{{ foreman_httpboot_proxy | default(ansible_fqdn) }}"
+    ipam: 'DHCP'
+    domains:
+    - "{{ domain_mgmt }}"

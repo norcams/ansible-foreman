@@ -1,0 +1,3 @@
+---
+# Use hieradata for foreman settings for now
+foreman_settings: []

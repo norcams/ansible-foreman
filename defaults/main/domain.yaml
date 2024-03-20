@@ -1,0 +1,3 @@
+---
+foreman_domains:
+  - name: "{{ domain_mgmt }}"

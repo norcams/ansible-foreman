@@ -1,0 +1,29 @@
+---
+- name: Debug subnets
+  debug: var=item
+  loop: "{{ foreman_hostgroups | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: foreman_debug
+
+- name: "Setup hostgroups (fail in check mode)"
+  theforeman.foreman.hostgroup:
+    name: "{{ item.name | mandatory }}"
+    parent: "{{ item.parent | default(omit) }}"
+    operatingsystem: "{{ item.name | default(omit) }}"
+    architecture: "{{ item.architecture | default('x86_64') }}"
+    medium: "{{ item.medium | default(omit) }}"
+    subnet: "{{ item.subnet | default(omit) }}"
+    pxe_loader: "{{ item.mask | default(omit) }}"
+    puppet_ca_proxy: "{{ item.puppet_ca_proxy | default(omit) }}"
+    domain: "{{ item.domains | default(omit) }}"
+    parameters: "{{ item.parameters | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_hostgroups | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  ignore_errors: "{{ ansible_check_mode }}"

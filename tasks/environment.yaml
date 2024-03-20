@@ -1,0 +1,14 @@
+---
+- name: Setup puppet environments
+  theforeman.foreman.puppet_environment:
+    name: "{{ item.name | mandatory }}"
+    locations: "{{ foreman_locations | default('Default Location') }}"
+    organizations: "{{ foreman_organizations | default('Default Organization') }}"
+    state: "{{ item.state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_puppet_environments | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"

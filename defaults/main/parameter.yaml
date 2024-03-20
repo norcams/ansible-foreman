@@ -1,0 +1,6 @@
+---
+foreman_global_parameter:
+   - name:  'time-zone'
+     value: 'Europe/Oslo'
+   - name:  'ntp-server'
+     value: 'no.pool.ntp.org'

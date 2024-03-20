@@ -1,0 +1,29 @@
+---
+- name: "Debug"
+  debug: var=item
+  loop: "{{ foreman_compute_profiles | product(foreman_compute_resources) | list }}"
+  loop_control:
+    label: "{{ item[1].name ~ ' => ' ~ item[0].name }}"
+  when: foreman_debug
+
+
+- name: "Setup compute profiles (will fail if foreman or libvirt on controller is down)"
+  theforeman.foreman.compute_profile:
+    name: "{{ item[0].name }}"
+    compute_attributes:
+      - compute_resource: "{{ item[1].name }}"
+        vm_attrs:
+          cores: "{{ item[0].vm_attrs.cores | mandatory }}"
+          memory: "{{ item[0].vm_attrs.memory | mandatory }}"
+          sockets: "{{ item[0].vm_attrs.sockets | default(1) }}"
+          interfaces_attributes: "{{ item[0].vm_attrs.interfaces_attributes | mandatory }}"
+          volumes_attributes: "{{ item[0].vm_attrs.volumes_attributes | mandatory }}"
+    state: "{{ item[0].state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_compute_profiles | product(foreman_compute_resources) | list }}"
+  loop_control:
+    label: "{{ item[1].name ~ ' => ' ~ item[0].name }}"
+  ignore_errors: true

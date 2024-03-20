@@ -1,0 +1,17 @@
+---
+foreman_operatingsystems:
+  - name: "CentOS"
+    major: "{{ el7_latest | regex_search('CentOS ([0-9]+).([0-9]+)', '\\1') | join }}"
+    minor: "{{ el7_latest | regex_search('CentOS ([0-9]+).([0-9]+)', '\\2') | join }}"
+    os_family: "Redhat"
+    media: 'CentOS NREC mirror'
+    ptables:
+      - "{{foreman_template_prefix }}Kickstart default"
+  - name: "AlmaLinux"
+    major: "{{ el8_latest | regex_search('AlmaLinux ([0-9]+).([0-9]+)', '\\1') | join }}"
+    minor: "{{ el8_latest | regex_search('AlmaLinux ([0-9]+).([0-9]+)', '\\2') | join }}"
+    os_family: "Redhat"
+    media: 'AlmaLinux NREC mirror'
+    ptables:
+      - "{{foreman_template_prefix }}Kickstart default"
+      - "{{foreman_template_prefix }}Kickstart default uefi"

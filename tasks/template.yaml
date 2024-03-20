@@ -1,0 +1,39 @@
+---
+# Either add your own templates via setting foreman_provisioning_template
+# or autoload all the templates (provisioning and snippet) in files/
+
+- name: "Debug"
+  debug: var=item
+  loop: "{{ foreman_provisioning_template | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: foreman_debug
+
+- name: Setup provisioning templates
+  theforeman.foreman.provisioning_template:
+    name: "{{ item.name | default(omit) }}"
+    template: "{{ item.template | default(omit) }}"
+    file_name: "{{ item.file_name | default(omit) }}"
+    operatingsystems: "{{ item.operatingsystems | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_provisioning_templates | default([]) }}"
+  loop_control:
+    label: "{{ item.name }} => {{ item.path }}"
+
+- name: "Autoload all provisioning templates"
+  theforeman.foreman.provisioning_template:
+    template: '{{ lookup("file", item) }}'
+    operatingsystems: "{{ ('provisioning_templates' in item) | ternary([el7_latest, el8_latest], omit) }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  with_fileglob:
+     - "{{ inventory_dir }}/files/provisioning_templates/*.erb"
+     - "{{ inventory_dir }}/files/snippet/*.erb"
+  when: foreman_autoload_templates
+  ignore_errors: "{{ ansible_check_mode }}"

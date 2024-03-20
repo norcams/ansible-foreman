@@ -1,0 +1,8 @@
+---
+foreman_installation_medium:
+  - name: "CentOS NREC mirror"
+    path: "{{ foreman_repo_server }}/el7/centos-base"
+    os_family: "Redhat"
+  - name: "AlmaLinux NREC mirror"
+    path: "{{ foreman_repo_server }}/el8/almalinux-base"
+    os_family: "Redhat"
