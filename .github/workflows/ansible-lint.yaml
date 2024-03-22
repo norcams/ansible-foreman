@@ -16,7 +16,7 @@ jobs:
         run: ansible-galaxy collection install community.general
 
       - name: Install Galaxy dependencies.
-        run: ansible-galaxy collection install community.theforeman
+        run: ansible-galaxy collection install theforeman.foreman
 
       - name: Install Galaxy dependencies.
         run: ansible-galaxy collection install ansible.posix
