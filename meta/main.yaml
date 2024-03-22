@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Raymond Kristiansen
+  description: Role to setup foreman for NREC
+  license: GPLv3
+  min_ansible_version: '2.15'
+  standalone: true
+
+  platforms:
+    - name: EL
+      versions:
+        - '8'
+
+  galaxy_tags: [foreman]
+
+dependencies: []
