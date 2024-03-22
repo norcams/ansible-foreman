@@ -1,5 +1,5 @@
 ---
-- name: Debug subnets
+- name: Debug
   debug: var=item
   loop: "{{ foreman_hostgroups | default([]) }}"
   loop_control:
@@ -10,8 +10,8 @@
   theforeman.foreman.hostgroup:
     name: "{{ item.name | mandatory }}"
     parent: "{{ item.parent | default(omit) }}"
-    operatingsystem: "{{ item.name | default(omit) }}"
-    architecture: "{{ item.architecture | default('x86_64') }}"
+    operatingsystem: "{{ item.operatingsystem | default(omit) }}"
+    architecture: "{{ item.architecture | default(omit) }}"
     medium: "{{ item.medium | default(omit) }}"
     subnet: "{{ item.subnet | default(omit) }}"
     pxe_loader: "{{ item.mask | default(omit) }}"

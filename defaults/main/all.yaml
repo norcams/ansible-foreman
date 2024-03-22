@@ -1,2 +1,3 @@
 ---
 foreman_autoload_templates: false
+foreman_debug: false
