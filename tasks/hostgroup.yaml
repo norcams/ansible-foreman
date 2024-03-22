@@ -1,6 +1,7 @@
 ---
 - name: Debug
-  debug: var=item
+  debug:
+    var: "{{ item }}"
   loop: "{{ foreman_hostgroups | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
@@ -9,7 +10,7 @@
 - name: "Setup hostgroups (fail in check mode)"
   theforeman.foreman.hostgroup:
     name: "{{ item.name | mandatory }}"
-    parent: "{{ item.parent | default(omit) }}"
+    parent: "{{ item.parent | default(omit) }}"
     operatingsystem: "{{ item.operatingsystem | default(omit) }}"
     architecture: "{{ item.architecture | default(omit) }}"
     medium: "{{ item.medium | default(omit) }}"
@@ -17,7 +18,7 @@
     pxe_loader: "{{ item.mask | default(omit) }}"
     puppet_ca_proxy: "{{ item.puppet_ca_proxy | default(omit) }}"
     domain: "{{ item.domains | default(omit) }}"
-    parameters: "{{ item.parameters | default(omit) }}"
+    parameters: "{{ item.parameters | default(omit) }}"
     state: "{{ item.state | default('present') }}"
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"

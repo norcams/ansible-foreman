@@ -15,4 +15,4 @@ foreman_subnets:
     httpboot_proxy: "{{ foreman_httpboot_proxy | default(ansible_fqdn) }}"
     ipam: 'DHCP'
     domains:
-    - "{{ domain_mgmt }}"
+      - "{{ domain_mgmt }}"

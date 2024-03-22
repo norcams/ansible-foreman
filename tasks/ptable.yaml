@@ -1,14 +1,14 @@
 ---
-  - name: "Setup partition table templates"
-    theforeman.foreman.partition_table:
-      name: "{{ item.name | default(omit) }}"
-      layout:  "{{ lookup('file', item.layout | mandatory) }}"
-      os_family: "{{ item.os_family | default('Redhat') }}"
-      state: "{{ item.state | default('present') }}"
-      username: "{{ foreman_username }}"
-      password: "{{ foreman_password }}"
-      server_url: "{{ foreman_server_url }}"
-      validate_certs: "{{ foreman_validate_certs | default('true') }}"
-    loop: "{{ foreman_partition_table | default([]) }}"
-    loop_control:
-      label: "{{ item.layout }}"
+- name: "Setup partition table templates"
+  theforeman.foreman.partition_table:
+    name: "{{ item.name | default(omit) }}"
+    layout:  "{{ lookup('file', item.layout | mandatory) }}"
+    os_family: "{{ item.os_family | default('Redhat') }}"
+    state: "{{ item.state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_partition_table | default([]) }}"
+  loop_control:
+    label: "{{ item.layout }}"

@@ -1,6 +1,7 @@
 ---
 - name: Debug subnets
-  debug: var=item
+  debug:
+    var: "{{ item }}"
   loop: "{{ foreman_subnets | default([]) }}"
   loop_control:
     label: "{{ item.name }}"

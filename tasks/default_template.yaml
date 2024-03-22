@@ -1,6 +1,7 @@
 ---
 - name: "Debug"
-  debug: var=item
+  debug:
+    var: "{{ item }}"
   loop: "{{ foreman_os_default_templates | default([]) }}"
   loop_control:
     label: "{{ item.operatingsystem }} => {{ item.provisioning_template }}"
@@ -15,7 +16,7 @@
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"
     server_url: "{{ foreman_server_url }}"
-    validate_certs: "{{ foreman_validate_certs | default('true') }}"    
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
   loop: "{{ foreman_os_default_templates | default([]) }}"
   loop_control:
     label: "{{ item.operatingsystem }} => {{ item.provisioning_template }}"

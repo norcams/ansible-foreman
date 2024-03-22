@@ -50,12 +50,3 @@
 - name: Compute profiles
   ansible.builtin.import_tasks: compute_profile.yaml
   tags: compute_profile
-
-#- name: Install packages
-  #  ansible.builtin.import_tasks: packages.yaml
-
-#- name: Add users
-  #  ansible.builtin.import_tasks: users.yaml
-
-#- name: Setup services
-#  ansible.builtin.import_tasks: service.yaml
