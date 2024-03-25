@@ -1,5 +1,11 @@
 ---
 foreman_compute_profiles:
+  - name: 1-Small
+    state: absent
+  - name: 2-Medium
+    state: absent
+  - name: 3-Large
+    state: absent
   - name: small
     vm_attrs:
       cores:   '1'
