@@ -8,7 +8,7 @@ foreman_compute_profiles:
     state: absent
   - name: small
     vm_attrs:
-      cores:   '1'
+      cpus:   '1'
       memory: '2254857830' # 2.1 GB for el8.6
       interfaces_attributes:
         '0':
@@ -27,7 +27,7 @@ foreman_compute_profiles:
           format_type:  'qcow2'
   - name: medium
     vm_attrs:
-      cores:   '1'
+      cpus:   '1'
       memory: '4294967296'
       interfaces_attributes:
         '0':
@@ -46,7 +46,7 @@ foreman_compute_profiles:
           format_type:  'qcow2'
   - name: large
     vm_attrs:
-      cores:   '2'
+      cpus:   '2'
       memory: '4294967296'
       interfaces_attributes:
         '0':
@@ -65,7 +65,7 @@ foreman_compute_profiles:
           format_type:  'qcow2'
   - name: xlarge
     vm_attrs:
-      cores:   '2'
+      cpus:   '2'
       memory: '8589934592'
       interfaces_attributes:
         '0':
@@ -84,7 +84,7 @@ foreman_compute_profiles:
           format_type:  'qcow2'
   - name: 2xlarge
     vm_attrs:
-      cores:   '4'
+      cpus:   '4'
       memory: '8589934592'
       interfaces_attributes:
         '0':

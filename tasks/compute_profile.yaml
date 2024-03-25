@@ -14,7 +14,7 @@
     compute_attributes:
       - compute_resource: "{{ item[1].name }}"
         vm_attrs:
-          cores: "{{ item[0].vm_attrs.cores | default(omit) }}"
+          cpus: "{{ item[0].vm_attrs.cpus | default(omit) }}"
           memory: "{{ item[0].vm_attrs.memory | default(omit) }}"
           sockets: "{{ item[0].vm_attrs.sockets | default(omit) }}"
           interfaces_attributes: "{{ item[0].vm_attrs.interfaces_attributes | default(omit) }}"
