@@ -1,6 +1,8 @@
 ---
 foreman_global_parameter:
-   - name:  'time-zone'
-     value: 'Europe/Oslo'
-   - name:  'ntp-server'
-     value: 'no.pool.ntp.org'
+  - name:  'time-zone'
+    value: 'Europe/Oslo'
+  - name:  'ntp-server'
+    value: 'no.pool.ntp.org'
+  - name:  'enable-norcams-repo'
+    value: true
