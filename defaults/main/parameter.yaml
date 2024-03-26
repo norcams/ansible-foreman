@@ -6,3 +6,5 @@ foreman_global_parameter:
     value: 'no.pool.ntp.org'
   - name:  'enable-norcams-repo'
     value: true
+  - name:  'run-puppet-in-installer'
+    value: true
