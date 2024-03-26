@@ -1,7 +1,7 @@
 ---
 - name: Global parameters
   ansible.builtin.import_tasks: parameter.yaml
-  tags: global_paramenter
+  tags: global_parameter
 
 - name: Partition table templates
   ansible.builtin.import_tasks: ptable.yaml
