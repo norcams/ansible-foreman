@@ -14,6 +14,7 @@
     provider_params:
       url: "{{ item.url | default('qemu+tcp://' ~ item.name ~ '/system') }}"
       display_type: "{{ item.display_type | default('vnc') }}"
+      set_console_password: "{{ item.set_console_password | default(false) }}"
     state: "{{ item.state | default('present') }}"
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"
