@@ -63,6 +63,7 @@ gpgcheck=0
 EOF
 <% else % -%>
 rpm -Uvh<%= http_proxy %><%= http_port %> https://<%= repo_host %>/<%= repo_name %>-<%= repo_os %>-<%= os_major %>.noarch.rpm
+<% end -%>
 <% elsif os_family == 'Debian' -%>
 apt-get update
 apt-get -y install ca-certificates
