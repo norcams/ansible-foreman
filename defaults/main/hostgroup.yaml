@@ -9,6 +9,7 @@ foreman_hostgroups:
     domain: "{{ domain_mgmt }}"
     pxe_loader: "PXELinux BIOS"
     puppet_ca_proxy: "{{ foreman_puppet_ca_proxy | default(ansible_fqdn) }}"
+    puppet_proxy: "{{ foreman_puppet_proxy | default(ansible_fqdn) }}"
   - name: "el8"
     architecture: "x86_64"
     operatingsystem: "{{ el8_latest }}"
@@ -18,6 +19,7 @@ foreman_hostgroups:
     domain: "{{ domain_mgmt }}"
     pxe_loader: "PXELinux BIOS"
     puppet_ca_proxy: "{{ foreman_puppet_ca_proxy | default(ansible_fqdn) }}"
+    puppet_proxy: "{{ foreman_puppet_proxy | default(ansible_fqdn) }}"
   - name: "legacy"
     parent: "el8"
     parameters:

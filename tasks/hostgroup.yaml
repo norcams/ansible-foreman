@@ -17,6 +17,7 @@
     subnet: "{{ item.subnet | default(omit) }}"
     pxe_loader: "{{ item.mask | default(omit) }}"
     puppet_ca_proxy: "{{ item.puppet_ca_proxy | default(omit) }}"
+    puppet_proxy: "{{ item.puppet_proxy | default(omit) }}"
     domain: "{{ item.domains | default(omit) }}"
     parameters: "{{ item.parameters | default(omit) }}"
     state: "{{ item.state | default('present') }}"
