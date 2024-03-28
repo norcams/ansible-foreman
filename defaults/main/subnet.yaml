@@ -9,8 +9,6 @@ foreman_subnets:
     dns_primary: "{{ foreman_dns_primary | default(ansible_facts['dns']['nameservers'][0]) }}"
     from_ip: "{{ mgmt_network_cidr | ansible.utils.ipaddr(dhcp_pool_start | default('200') ) | ansible.utils.ipaddr('address') }}"
     to_ip: "{{  mgmt_network_cidr | ansible.utils.ipaddr(dhcp_pool_end | default('250')) | ansible.utils.ipaddr('address') }}"
-      #    from_ip: "{{ mgmt_network_cidr | ansible.utils.ipaddr(dhcp_pool_start | mandatory ) | ansible.utils.ipaddr('address') }}"
-      #    to_ip: "{{  mgmt_network_cidr | ansible.utils.ipaddr(dhcp_pool_end) | ansible.utils.ipaddr('address') }}"
     boot_mode: "DHCP"
     dhcp_proxy: "{{ foreman_dhcp_proxy | default(ansible_fqdn) }}"
     tftp_proxy: "{{ foreman_tftp_proxy | default(ansible_fqdn) }}"
