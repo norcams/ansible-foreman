@@ -14,6 +14,7 @@
     minor: "{{ item.minor | default(omit) }}"
     password_hash: "{{ item.password_hash | default('SHA512') }}"
     architectures: "{{ item.architectures | default('x86_64') }}"
+    media: "{{ item.media | default(omit) }}"
     ptables: "{{ item.ptables | default(omit) }}"
     os_family: "{{ item.os_family | default(omit) }}"
     state: "{{ item.state | default('present') }}"
