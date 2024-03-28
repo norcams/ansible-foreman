@@ -22,6 +22,8 @@
     httpboot_proxy: "{{ item.httpboot_proxy | default(omit) }}"
     ipam: "{{ item.ipam | default('DHCP') }}"
     domains: "{{ item.domains | default(omit) }}"
+    from_ip: "{{ item.from_ip | default(omit) }}"
+    to_ip: "{{ item.to_ip | default(omit) }}"
     state: "{{ item.state | default('present') }}"
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"
