@@ -50,3 +50,7 @@
 - name: Compute profiles
   ansible.builtin.import_tasks: compute_profile.yaml
   tags: compute_profile
+
+- name: Default pxelinxu.cfg
+  ansible.builtin.import_tasks: pxelinux.yaml
+  tags: pxelinux
