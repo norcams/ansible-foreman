@@ -1,3 +1,7 @@
 ---
 foreman_autoload_templates: false
 foreman_debug: false
+
+foreman_provisioning_subnet: 'mgmt'
+
+foreman_deploy_default_pxelinux_cfg: false
