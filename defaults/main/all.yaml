@@ -1,7 +1,16 @@
 ---
+# Common default values
+# Can be set in group/host vars
+
+# Deploy all norcams templates and snippets from files/
 foreman_autoload_templates: false
+
+# If set to true this will print config for most resources
 foreman_debug: false
 
+# Name of the provisioning subnet
 foreman_provisioning_subnet: 'mgmt'
 
-foreman_deploy_default_pxelinux_cfg: false
+# This should be defined to something in group_vars/host_vars.
+# If not set all templete names must be uniqe.
+foreman_template_prefix: ''
