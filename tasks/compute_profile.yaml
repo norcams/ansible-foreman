@@ -1,7 +1,7 @@
 ---
-- name: "Debug"
+- name: "Debug compute profile config"
   debug:
-    var: "{{ item }}"
+    var: item
   loop: "{{ foreman_compute_profiles | product(foreman_compute_resources) | list }}"
   loop_control:
     label: "{{ item[1].name ~ ' => ' ~ item[0].name }}"

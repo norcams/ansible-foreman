@@ -1,7 +1,7 @@
 ---
-- name: Debug
+- name: "Debug hostgroup config"
   debug:
-    var: "{{ item }}"
+    var: item
   loop: "{{ foreman_hostgroups | default([]) }}"
   loop_control:
     label: "{{ item.name }}"

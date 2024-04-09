@@ -1,10 +1,10 @@
 ---
-- name: "Debug"
+- name: "Debug operatingsystem config"
   debug:
-    var: "{{ item }}"
+    var: item
   loop: "{{ foreman_operatingsystems | default([]) }}"
   loop_control:
-    label: "{{ item.name }}"
+    label: "{{ item.name | default(omit) }}"
   when: foreman_debug
 
 - name: "Setup operatingsystem (fail in check mode)"

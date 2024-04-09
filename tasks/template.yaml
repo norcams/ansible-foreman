@@ -2,9 +2,9 @@
 # Either add your own templates via setting foreman_provisioning_template
 # or autoload all the templates (provisioning and snippet) in files/
 
-- name: "Debug"
+- name: "Debug provisoning template config"
   debug:
-    var: "{{ item }}"
+    var: item
   loop: "{{ foreman_provisioning_template | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
