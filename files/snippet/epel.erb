@@ -23,6 +23,6 @@ baseurl=https://download.iaas.uio.no/nrec/<%= environment %>/el<%=os_major %>/ep
 enabled=1
 gpgcheck=0
 EOF
-<% else % -%>
+<% else -%>
 rpm -Uvh<%= http_proxy %><%= http_port %> <%= repo_base %>/epel-release-latest-<%= os_major %>.noarch.rpm
 <% end -%>
