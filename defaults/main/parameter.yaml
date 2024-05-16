@@ -1,10 +1,15 @@
 ---
 foreman_global_parameter:
-  - name:  'time-zone'
+  - name: 'time-zone'
     value: 'Europe/Oslo'
-  - name:  'ntp-server'
+  - name: 'ntp-server'
     value: 'no.pool.ntp.org'
-  - name:  'enable-norcams-repo'
+  - name: 'enable-norcams-repo'
+    parameter_type: boolean
+    value: true
+  - name:  'enable-norcams-epel'
+    parameter_type: boolean
     value: true
   - name:  'run-puppet-in-installer'
+    parameter_type: boolean
     value: true
