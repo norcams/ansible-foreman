@@ -13,3 +13,6 @@ foreman_global_parameter:
   - name:  'run-puppet-in-installer'
     parameter_type: boolean
     value: true
+  - name:  'puppet_systemd_firstboot'
+    parameter_type: boolean
+    value: true
