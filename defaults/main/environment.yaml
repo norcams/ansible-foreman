@@ -3,3 +3,4 @@ foreman_puppet_environments:
   - name: "production"
   - name: "admin"
   - name: "ussuri"
+  - name: "victoria"
