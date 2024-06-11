@@ -26,7 +26,7 @@ foreman_hostgroups:
       - name: "biosdevname"
         value: 1
       - name: "installdevice"
-        value: "sda"
+        value: "vda"
   - name: "uefi"
     parent: "el8"
     ptable: "{{ foreman_template_prefix }}Kickstart default uefi"
