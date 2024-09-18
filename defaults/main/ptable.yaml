@@ -1,4 +1,6 @@
 ---
 foreman_partition_table:
-  - layout: 'partition_tables_templates/kickstart_default.erb'
-  - layout: 'partition_tables_templates/kickstart_default_uefi.erb'
+  - name:   "{{ foreman_template_prefix }}Kickstart default"
+    layout: "partition_tables_templates/kickstart_default.erb"
+  - name:   "{{ foreman_template_prefix }}Kickstart default uefi"
+    layout: "partition_tables_templates/kickstart_default_uefi.erb"
