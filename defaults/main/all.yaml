@@ -14,3 +14,7 @@ foreman_provisioning_subnet: 'mgmt'
 # This should be defined to something in group_vars/host_vars.
 # If not set all templete names must be uniqe.
 foreman_template_prefix: ''
+
+foreman_centos7_medium_name:      'CentOS NREC mirror'
+foreman_almalinux8_medium_name:   'AlmaLinux NREC mirror'
+foreman_almalinux9_medium_name:   'AlmaLinux NREC mirror'
