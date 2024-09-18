@@ -12,6 +12,7 @@
     name: "{{ item.name | mandatory }}"
     major: "{{ item.major | default(omit) }}"
     minor: "{{ item.minor | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
     password_hash: "{{ item.password_hash | default('SHA512') }}"
     architectures: "{{ item.architectures | default('x86_64') }}"
     media: "{{ item.media | default(omit) }}"
