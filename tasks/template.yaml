@@ -23,7 +23,7 @@
     validate_certs: "{{ foreman_validate_certs | default('true') }}"
   loop: "{{ foreman_provisioning_templates | default([]) }}"
   loop_control:
-    label: "{{ item.name }} => {{ item.path }}"
+    label: "{{ item.name }}"
 
 - name: "Autoload all provisioning templates"
   theforeman.foreman.provisioning_template:
