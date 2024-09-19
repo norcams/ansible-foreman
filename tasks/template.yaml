@@ -12,7 +12,7 @@
 
 - name: Setup provisioning templates
   theforeman.foreman.provisioning_template:
-    name: "{{ item.name | default(omit) }}"
+    name: "{{ item.name }}"
     template: "{{ item.template | default(omit) }}"
     file_name: "{{ item.file_name | default(omit) }}"
     operatingsystems: "{{ item.operatingsystems | default(omit) }}"
