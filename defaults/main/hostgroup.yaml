@@ -30,15 +30,13 @@ foreman_hostgroups:
     pxe_loader: "PXELinux BIOS"
     puppet_ca_proxy: "{{ foreman_puppet_ca_proxy | default(ansible_fqdn) }}"
     puppet_proxy: "{{ foreman_puppet_proxy | default(ansible_fqdn) }}"
-  - name: "legacy"
-    parent: "el8"
+  - name: "el8/legacy"
     parameters:
       - name: "biosdevname"
         value: 1
       - name: "installdevice"
         value: "vda"
-  - name: "uefi"
-    parent: "el8"
+  - name: "el8/uefi"
     ptable: "{{ foreman_template_prefix }}Kickstart default uefi"
     pxe_loader: "Grub2 UEFI"
     parameters:
@@ -49,15 +47,13 @@ foreman_hostgroups:
       - name: "leavebootorder"
         parameter_type: boolean
         value: true
-  - name: "legacy"
-    parent: "el9"
+  - name: "el9/legacy"
     parameters:
       - name: "biosdevname"
         value: 1
       - name: "installdevice"
         value: "vda"
-  - name: "uefi"
-    parent: "el9"
+  - name: "el9/uefi"
     ptable: "{{ foreman_template_prefix }}Kickstart default uefi"
     pxe_loader: "Grub2 UEFI"
     parameters:

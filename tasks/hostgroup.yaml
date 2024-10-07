@@ -1,8 +1,17 @@
 ---
+#
+# We merge `foreman_hostgroups` and  `foreman_custom_hostgroups` based on name
+# attribute so all names must be uniqe!
+# You can either add more using `foreman_custom_hostgroups` or override the
+# existing ones setting `foreman_hostgroups`
+#
 - name: "Debug hostgroup config"
   debug:
     var: item
-  loop: "{{ foreman_hostgroups | default([]) }}"
+  loop: "{{ [foreman_hostgroups, foreman_custom_hostgroups | default([{}])] |
+            community.general.lists_mergeby('name',
+                                            recursive=true,
+                                            list_merge='prepend_rp') }}"
   loop_control:
     label: "{{ item.name }}"
   when: foreman_debug
@@ -26,7 +35,10 @@
     password: "{{ foreman_password }}"
     server_url: "{{ foreman_server_url }}"
     validate_certs: "{{ foreman_validate_certs | default('true') }}"
-  loop: "{{ foreman_hostgroups | default([]) }}"
+  loop: "{{ [foreman_hostgroups, foreman_custom_hostgroups | default([{}])] |
+            community.general.lists_mergeby('name',
+                                            recursive=true,
+                                            list_merge='prepend_rp') }}"
   loop_control:
     label: "{{ item.name }}"
   ignore_errors: "{{ ansible_check_mode }}"
