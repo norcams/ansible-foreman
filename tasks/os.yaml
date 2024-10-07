@@ -1,10 +1,15 @@
 ---
+#
+# Since name is not uniqe we cannot create custom varsiable and merge it with
+# the default `foreman_operatingsystems`. If you need to add another os you
+# will also need to copy defaults/main/os.yaml if you also need them!
+#
 - name: "Debug operatingsystem config"
   debug:
     var: item
   loop: "{{ foreman_operatingsystems | default([]) }}"
   loop_control:
-    label: "{{ item.name | default(omit) }}"
+    label: "{{ item.name }} {{ item.major | default('')}}"
   when: foreman_debug
 
 - name: "Setup operatingsystem (fail in check mode)"
@@ -12,6 +17,7 @@
     name: "{{ item.name | mandatory }}"
     major: "{{ item.major | default(omit) }}"
     minor: "{{ item.minor | default(omit) }}"
+    release_name: "{{ item.release_name | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     password_hash: "{{ item.password_hash | default('SHA512') }}"
     architectures: "{{ item.architectures | default('x86_64') }}"
@@ -25,5 +31,5 @@
     validate_certs: "{{ foreman_validate_certs | default('true') }}"
   loop: "{{ foreman_operatingsystems | default([]) }}"
   loop_control:
-    label: "{{ item.name }}"
+    label: "{{ item.name }} {{ item.major | default('')}}"
   ignore_errors: "{{ ansible_check_mode }}"
