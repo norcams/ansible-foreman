@@ -32,7 +32,7 @@
     name: "{{ item.name }}"
     template: "{{ lookup('ansible.builtin.url', foreman_upstream_template_url + item.kind + '/' + item.file_name, split_lines=False) }}"
     operatingsystems: "{{ item.operatingsystems | default(omit) }}"
-    kind: "{{ item.kind| default(omit) }}"
+    kind: "{{ item.kind | default(omit) }}"
     state: "{{ item.state | default('present') }}"
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"
