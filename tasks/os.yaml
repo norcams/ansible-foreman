@@ -9,7 +9,7 @@
     var: item
   loop: "{{ foreman_operatingsystems | default([]) }}"
   loop_control:
-    label: "{{ item.name }} {{ item.major | default('')}}"
+    label: "{{ item.name }} {{ item.major | default('') }}"
   when: foreman_debug
 
 - name: "Setup operatingsystem (fail in check mode)"
@@ -31,5 +31,5 @@
     validate_certs: "{{ foreman_validate_certs | default('true') }}"
   loop: "{{ foreman_operatingsystems | default([]) }}"
   loop_control:
-    label: "{{ item.name }} {{ item.major | default('')}}"
+    label: "{{ item.name }} {{ item.major | default('') }}"
   ignore_errors: "{{ ansible_check_mode }}"
