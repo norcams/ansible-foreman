@@ -26,6 +26,7 @@
   loop_control:
     label: "{{ item.name }}"
   when: not foreman_use_upstream_templates
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Fetch upstream provisioning templates
   theforeman.foreman.provisioning_template:
@@ -42,6 +43,7 @@
   loop_control:
     label: "{{ item.name }}"
   when: foreman_use_upstream_templates
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: "Autoload all provisioning templates"
   theforeman.foreman.provisioning_template:
