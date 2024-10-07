@@ -16,6 +16,7 @@
     template: "{{ item.template | default(omit) }}"
     file_name: "{{ item.file_name | default(omit) }}"
     operatingsystems: "{{ item.operatingsystems | default(omit) }}"
+    kind: "{{ item.kind | default(omit) }}"
     state: "{{ item.state | default('present') }}"
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"
@@ -24,6 +25,23 @@
   loop: "{{ foreman_provisioning_templates | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
+  when: not foreman_use_upstream_templates
+
+- name: Fetch upstream provisioning templates
+  theforeman.foreman.provisioning_template:
+    name: "{{ item.name }}"
+    template: "{{ lookup('ansible.builtin.url', foreman_upstream_template_url + item.kind + '/' + item.file_name, split_lines=False) }}"
+    operatingsystems: "{{ item.operatingsystems | default(omit) }}"
+    kind: "{{ item.kind| default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+    username: "{{ foreman_username }}"
+    password: "{{ foreman_password }}"
+    server_url: "{{ foreman_server_url }}"
+    validate_certs: "{{ foreman_validate_certs | default('true') }}"
+  loop: "{{ foreman_provisioning_templates | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: foreman_use_upstream_templates
 
 - name: "Autoload all provisioning templates"
   theforeman.foreman.provisioning_template:
