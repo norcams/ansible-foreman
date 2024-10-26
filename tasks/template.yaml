@@ -3,7 +3,7 @@
 # or autoload all the templates (provisioning and snippet) in files/
 
 - name: "Debug provisoning template config"
-  debug:
+  ansible.builtin.debug:
     var: item
   loop: "{{ foreman_provisioning_template | default([]) }}"
   loop_control:

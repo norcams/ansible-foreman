@@ -1,6 +1,6 @@
 ---
 - name: "Debug subnets config"
-  debug:
+  ansible.builtin.debug:
     var: item
   loop: "{{ foreman_subnets | default([]) }}"
   loop_control:

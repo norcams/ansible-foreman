@@ -6,7 +6,7 @@
 # existing ones setting `foreman_hostgroups`
 #
 - name: "Debug hostgroup config"
-  debug:
+  ansible.builtin.debug:
     var: item
   loop: "{{ [foreman_hostgroups, foreman_custom_hostgroups | default([{}])] |
             community.general.lists_mergeby('name',

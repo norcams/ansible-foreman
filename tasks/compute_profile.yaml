@@ -1,6 +1,6 @@
 ---
 - name: "Debug compute profile config"
-  debug:
+  ansible.builtin.debug:
     var: item
   loop: "{{ foreman_compute_profiles | product(foreman_compute_resources) | list }}"
   loop_control:

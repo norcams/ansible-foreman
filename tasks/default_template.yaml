@@ -1,6 +1,6 @@
 ---
 - name: "Debug os default templates"
-  debug:
+  ansible.builtin.debug:
     var: "{{ item }}"
   loop: "{{ [foreman_os_default_templates, foreman_custom_os_default_templates | default([{}])] |
             community.general.lists_mergeby('name',

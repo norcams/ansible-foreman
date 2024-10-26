@@ -5,7 +5,7 @@
 # will also need to copy defaults/main/os.yaml if you also need them!
 #
 - name: "Debug operatingsystem config"
-  debug:
+  ansible.builtin.debug:
     var: item
   loop: "{{ foreman_operatingsystems | default([]) }}"
   loop_control:
