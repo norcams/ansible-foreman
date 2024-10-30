@@ -44,9 +44,6 @@ foreman_hostgroups:
         value: 1
       - name: "installdevice"
         value: "sda"
-      - name: "leavebootorder"
-        parameter_type: boolean
-        value: true
   - name: "el9/legacy"
     parameters:
       - name: "biosdevname"
@@ -61,6 +58,3 @@ foreman_hostgroups:
         value: 1
       - name: "installdevice"
         value: "sda"
-      - name: "leavebootorder"
-        parameter_type: boolean
-        value: true
