@@ -10,7 +10,7 @@
     label: "{{ item.name }}"
   when: foreman_debug
 
-- name: "Create OS template association (fail in check mode)"
+- name: "Create default OS template (fail in check mode)"
   theforeman.foreman.os_default_template:
     operatingsystem: "{{ item.operatingsystem | mandatory }}"
     template_kind: "{{ item.template_kind | mandatory }}"
