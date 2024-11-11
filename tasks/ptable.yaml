@@ -1,4 +1,15 @@
 ---
+- name: "Debug ptable config"
+  ansible.builtin.debug:
+    var: item
+  loop: "{{ [foreman_partition_table, foreman_custom_partition_table | default([{}])] |
+            community.general.lists_mergeby('name',
+                                            recursive=true,
+                                            list_merge='prepend_rp') }}"
+  loop_control:
+    label: "{{ item.name }} -> {{ item.layout }}"
+  when: foreman_debug
+
 - name: "Setup partition table templates"
   theforeman.foreman.partition_table:
     name: "{{ item.name | default(omit) }}"
@@ -9,6 +20,9 @@
     password: "{{ foreman_password }}"
     server_url: "{{ foreman_server_url }}"
     validate_certs: "{{ foreman_validate_certs | default('true') }}"
-  loop: "{{ foreman_partition_table | default([]) }}"
+  loop: "{{ [foreman_partition_table, foreman_custom_partition_table | default([{}])] |
+            community.general.lists_mergeby('name',
+                                            recursive=true,
+                                            list_merge='prepend_rp') }}"
   loop_control:
-    label: "{{ item.layout }}"
+    label: "{{ item.name }} -> {{ item.layout }}"
