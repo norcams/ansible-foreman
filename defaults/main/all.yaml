@@ -6,7 +6,6 @@
 foreman_autoload_templates: false
 
 # Enable this to fetch the official templates instead for custom ones
-foreman_use_upstream_templates: false
 foreman_upstream_template_url: 'https://raw.githubusercontent.com/theforeman/foreman/refs/heads/develop/app/views/unattended/provisioning_templates/'
 
 # If set to true this will print config for most resources

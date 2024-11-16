@@ -25,7 +25,6 @@
   loop: "{{ foreman_provisioning_templates | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
-  when: not foreman_use_upstream_templates
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Fetch upstream provisioning templates
@@ -39,10 +38,9 @@
     password: "{{ foreman_password }}"
     server_url: "{{ foreman_server_url }}"
     validate_certs: "{{ foreman_validate_certs | default('true') }}"
-  loop: "{{ foreman_provisioning_templates | default([]) }}"
+  loop: "{{ foreman_upstream_provisioning_templates | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
-  when: foreman_use_upstream_templates
   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: "Autoload all provisioning templates"
