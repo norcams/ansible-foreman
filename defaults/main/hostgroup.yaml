@@ -1,15 +1,5 @@
 ---
 foreman_hostgroups:
-  - name: "el7"
-    architecture: "x86_64"
-    operatingsystem: "{{ el7_latest }}"
-    medium: "{{ foreman_centos7_medium_name }}"
-    ptable: "{{ foreman_template_prefix }}Kickstart default"
-    subnet: "{{ foreman_provisioning_subnet }}"
-    domain: "{{ domain_mgmt }}"
-    pxe_loader: "PXELinux BIOS"
-    puppet_ca_proxy: "{{ foreman_puppet_ca_proxy | default(ansible_fqdn) }}"
-    puppet_proxy: "{{ foreman_puppet_proxy | default(ansible_fqdn) }}"
   - name: "el8"
     architecture: "x86_64"
     operatingsystem: "{{ el8_latest }}"

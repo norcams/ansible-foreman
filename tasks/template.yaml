@@ -46,7 +46,7 @@
 - name: "Autoload all provisioning templates"
   theforeman.foreman.provisioning_template:
     template: '{{ lookup("file", item) }}'
-    operatingsystems: "{{ ('provisioning_templates' in item) | ternary([el7_latest, el8_latest, el9_latest], omit) }}"
+    operatingsystems: "{{ ('provisioning_templates' in item) | ternary([el8_latest, el9_latest], omit) }}"
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"
     server_url: "{{ foreman_server_url }}"
