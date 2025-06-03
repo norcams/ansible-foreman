@@ -5,7 +5,7 @@ model: ProvisioningTemplate
 location: Default Location
 organization: Default Organization
 oses:
-- AlmaLinux  
+- AlmaLinux
 - CentOS
 - Fedora
 - RedHat
@@ -28,8 +28,7 @@ oses:
   end
 
   # Tell Anaconda what to pass off to kickstart server
-  #  both current and legacy syntax provided
-  options.push("kssendmac", "ks.sendmac", "inst.ks.sendmac")
+  options.push("inst.ks.sendmac")
 
   # handle non-DHCP environments (e.g. bootdisk)
   subnet = @host.provision_interface.subnet
@@ -86,7 +85,7 @@ set default=0
 set timeout=<%= host_param('loader_timeout') || 10 %>
 
 menuentry '<%= template_name %>' {
-  <%= linuxcmd %> <%= @kernel %> ks=<%= foreman_url('provision') %> <%= pxe_kernel_options %> <%= ksoptions %>
+  <%= linuxcmd %> <%= @kernel %> inst.ks=<%= foreman_url('provision') %> <%= pxe_kernel_options %> <%= ksoptions %>
   <%= initrdcmd %> <%= @initrd %>
 }
 

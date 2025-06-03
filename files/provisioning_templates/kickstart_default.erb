@@ -192,7 +192,12 @@ authconfig --useshadow --passalgo=<%= @host.operatingsystem.password_hash.downca
 <% if use_ntp -%>
 timezone --utc <%= host_param('time-zone') || 'UTC' %>
 <% else -%>
+<% if (rhel_compatible && os_major <= 8) -%>
 timezone --utc <%= host_param('time-zone') || 'UTC' %> <%= host_param('ntp-server') ? "--ntpservers #{host_param('ntp-server')}" : '' %>
+<% else -%>
+timezone --utc <%= host_param('time-zone') || 'UTC' %>
+timesource <%= host_param('ntp-server') ? "--ntp-server #{host_param('ntp-server')}" : '' %>
+<% end -%>
 <% end -%>
 
 <% if rhel_compatible -%>
