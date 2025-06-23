@@ -37,7 +37,7 @@ snippet: true
 
   # tell Anaconda what to pass off to kickstart server
   # both current and legacy syntax provided
-  options.push("kssendmac", "ks.sendmac", "inst.ks.sendmac")
+  options.push("ks.sendmac", "inst.ks.sendmac")
 
   # networking credentials
   raise("Dual-stack provisioning not supported") if subnet4 && subnet6
