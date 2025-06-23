@@ -4,3 +4,6 @@ foreman_puppet_environments:
   - name: "admin"
   - name: "ussuri"
   - name: "victoria"
+  - name: "xena"
+  - name: "yoga"
+  - name: "yoga_el9"
