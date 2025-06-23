@@ -9,7 +9,7 @@ foreman_compute_profiles:
   - name: small
     vm_attrs:
       cpus:   '1'
-      memory: '2464153600' # 2350 MB for el8.10
+      memory: '3145728000' # 3000 MB for el9.6
       interfaces_attributes:
         '0':
           bridge: br0
