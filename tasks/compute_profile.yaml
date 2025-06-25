@@ -17,6 +17,7 @@
           cpus: "{{ item[0].vm_attrs.cpus | default(omit) }}"
           memory: "{{ item[0].vm_attrs.memory | default(omit) }}"
           sockets: "{{ item[0].vm_attrs.sockets | default(omit) }}"
+          cpu_mode: "{{ item[0].vm_attrs.cpu_mode | default(omit) }}"
           interfaces_attributes: "{{ item[0].vm_attrs.interfaces_attributes | default(omit) }}"
           volumes_attributes: "{{ item[0].vm_attrs.volumes_attributes | default(omit) }}"
     state: "{{ item[0].state | default('present') }}"

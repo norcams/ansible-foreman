@@ -10,6 +10,7 @@ foreman_compute_profiles:
     vm_attrs:
       cpus:   '1'
       memory: '3145728000' # 3000 MB for el9.6
+      cpu_mode: 'host-passthrough'
       interfaces_attributes:
         '0':
           bridge: br0
@@ -29,6 +30,7 @@ foreman_compute_profiles:
     vm_attrs:
       cpus:   '1'
       memory: '4294967296'
+      cpu_mode: 'host-passthrough'
       interfaces_attributes:
         '0':
           bridge: br0
@@ -48,6 +50,7 @@ foreman_compute_profiles:
     vm_attrs:
       cpus:   '2'
       memory: '4294967296'
+      cpu_mode: 'host-passthrough'
       interfaces_attributes:
         '0':
           bridge: br0
@@ -67,6 +70,7 @@ foreman_compute_profiles:
     vm_attrs:
       cpus:   '2'
       memory: '8589934592'
+      cpu_mode: 'host-passthrough'
       interfaces_attributes:
         '0':
           bridge: br0
@@ -86,6 +90,7 @@ foreman_compute_profiles:
     vm_attrs:
       cpus:   '4'
       memory: '8589934592'
+      cpu_mode: 'host-passthrough'
       interfaces_attributes:
         '0':
           bridge: br0
