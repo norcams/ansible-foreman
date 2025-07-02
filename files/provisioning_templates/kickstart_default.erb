@@ -291,11 +291,13 @@ mkdir -p /etc/udev/rules.d/60-net.rules
 ### NORCAMS (end) ###
 
 <%= snippet_if_exists(template_name + " custom post") %>
+<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i < 9 -%>
 <%= snippet 'kickstart_networking_setup' %>
+<% end -%>
 
 ### NORCAMS (start) ###
-# **** Disable NetworkManager on el7 or newer
-<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i >= 7 -%>
+# **** Disable NetworkManager on el7 and el8
+<% if @host.operatingsystem.family == 'Redhat' and @host.operatingsystem.major.to_i >= 7 and @host.operatingsystem.major.to_i < 9 -%>
 /usr/bin/systemctl disable NetworkManager.service
 <% end -%>
 ### NORCAMS (end) ###
