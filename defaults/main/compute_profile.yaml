@@ -9,7 +9,7 @@ foreman_compute_profiles:
   - name: small
     vm_attrs:
       cpus:   '1'
-      memory: '3145728000' # 3000 MB for el9.6
+      memory: '3407872000' # 3250 MB for el9.7
       cpu_mode: 'host-passthrough'
       interfaces_attributes:
         '0':
