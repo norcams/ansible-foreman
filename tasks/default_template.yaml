@@ -14,7 +14,7 @@
   theforeman.foreman.os_default_template:
     operatingsystem: "{{ item.operatingsystem | mandatory }}"
     template_kind: "{{ item.template_kind | mandatory }}"
-    provisioning_template: "{{ item.provisioning_template | default(omit) }}"
+    provisioning_template: "{{ item.provisioning_template  | default(omit) }}"
     state: "{{ item.state | default('present') }}"
     username: "{{ foreman_username }}"
     password: "{{ foreman_password }}"
