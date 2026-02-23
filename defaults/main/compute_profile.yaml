@@ -24,7 +24,7 @@ foreman_compute_profiles:
         '0':
           allocation:   '0G'
           pool_name:    'dirpool'
-          capacity:     '10G'
+          capacity:     '15G'
           format_type:  'qcow2'
   - name: medium
     vm_attrs:
@@ -44,7 +44,7 @@ foreman_compute_profiles:
         '0':
           allocation:   '0G'
           pool_name:    'dirpool'
-          capacity:     '10G'
+          capacity:     '15G'
           format_type:  'qcow2'
   - name: large
     vm_attrs:
@@ -64,7 +64,7 @@ foreman_compute_profiles:
         '0':
           allocation:   '0G'
           pool_name:    'dirpool'
-          capacity:     '10G'
+          capacity:     '15G'
           format_type:  'qcow2'
   - name: xlarge
     vm_attrs:
@@ -84,7 +84,7 @@ foreman_compute_profiles:
         '0':
           allocation:   '0G'
           pool_name:    'dirpool'
-          capacity:     '10G'
+          capacity:     '15G'
           format_type:  'qcow2'
   - name: 2xlarge
     vm_attrs:
@@ -104,5 +104,5 @@ foreman_compute_profiles:
         '0':
           allocation:   '0G'
           pool_name:    'dirpool'
-          capacity:     '10G'
+          capacity:     '15G'
           format_type:  'qcow2'
