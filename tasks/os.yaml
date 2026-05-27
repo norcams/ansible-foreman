@@ -18,7 +18,7 @@
     major: "{{ item.major | default(omit) }}"
     minor: "{{ item.minor | default(omit) }}"
     release_name: "{{ item.release_name | default(omit) }}"
-    description: "{{ item.description | default(omit) }}"
+    description: "{{ item.description | mandatory }}"
     password_hash: "{{ item.password_hash | default('SHA512') }}"
     architectures: "{{ item.architectures | default('x86_64') }}"
     media: "{{ item.media | default(omit) }}"
@@ -29,7 +29,11 @@
     password: "{{ foreman_password }}"
     server_url: "{{ foreman_server_url }}"
     validate_certs: "{{ foreman_validate_certs | default('true') }}"
-  loop: "{{ foreman_operatingsystems | default([]) }}"
+  #loop: "{{ foreman_operatingsystems | default([]) }}"
+  loop: "{{ [foreman_operatingsystems,  foreman_custom_operatingsystems | default([{}])] |
+            community.general.lists_mergeby('description',
+                                            recursive=true,
+                                            list_merge='prepend_rp') }}"
   loop_control:
     label: "{{ item.name }} {{ item.major | default('') }}"
   ignore_errors: "{{ ansible_check_mode }}"
